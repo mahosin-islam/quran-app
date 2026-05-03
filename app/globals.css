@@ -1,26 +1,52 @@
+/* ১. সবার উপরে সব @import থাকতে হবে */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+
+/* Tailwind v4 এ darkMode এভাবে set করতে হয় */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@plugin "daisyui" {
+  themes: light --default, dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Light Theme */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-base-100: #ffffff;
+  --color-base-200: #f1f5f9;
+  --color-base-300: #e2e8f0;
+  --color-base-content: #0f172a;
+  --color-primary: #0f172a;
+  --color-primary-content: #ffffff;
+  --color-secondary: #0d9488;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark Theme */
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-base-100: #0f172a;
+  --color-base-200: #1e293b;
+  --color-base-300: #334155;
+  --color-base-content: #f1f5f9;
+  --color-primary: #38bdf8;
+  --color-primary-content: #000000;
+  --color-secondary: #2dd4bf;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ৪. আরবী ফন্ট ক্লাস (যা আমরা ডাইনামিকভাবে ব্যবহার করব) */
+.font-amiri { 
+  font-family: 'Amiri', serif; 
+}
+
+.font-scheherazade { 
+  font-family: 'Scheherazade New', serif; 
+}
+
+/* ৫. কুরআনের টেক্সটের জন্য একটি কমন ক্লাস (ঐচ্ছিক) */
+.quran-text {
+  direction: rtl; /* আরবী ডান থেকে বামে হবে */
+  line-height: 2; /* আয়াতগুলোর মাঝে পর্যাপ্ত গ্যাপের জন্য */
 }
