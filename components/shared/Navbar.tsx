@@ -27,7 +27,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+const dropdownRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     setMounted(true);
