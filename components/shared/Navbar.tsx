@@ -70,7 +70,7 @@ const dropdownRef = useRef<HTMLLIElement>(null);
               />
             </div>
             <h1 className="text-lg text-base-content md:text-xl font-bold leading-none">
-              Quranul-Hakim
+              Quranul-Mazid
             </h1>
           </Link>
         </div>

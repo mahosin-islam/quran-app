@@ -4,10 +4,20 @@ import MobileSurahDrawer from "@/components/MobileSurahDrawer";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Settings } from "lucide-react";
+import { Surah } from "@/types";
 
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
-    const surahs = await getAllSurahs();
+    let surahs: Surah[] = [];
+
+    try {
+        const fetchedSurahs = await getAllSurahs();
+        surahs = fetchedSurahs || [];
+    } catch (error) {
+        console.error("Failed to fetch surahs in surah layout:", error);
+        surahs = [];
+    }
 
     return (
         <div className="flex h-screen overflow-hidden bg-base-100">
@@ -29,9 +39,6 @@ export default async function Layout({ children }: { children: React.ReactNode }
                             </h1>
                         </Link>
 
-                        {/* ← এখানে ThemeToggle বসালো */}
-
-
                         <div className="flex items-center gap-3 text-info-content">
                             {/* থিম টগল বাটন */}
                             <div className="flex items-center justify-center">
@@ -40,7 +47,6 @@ export default async function Layout({ children }: { children: React.ReactNode }
 
                             {/* সেটিংস আইকন */}
                             <button className="p-2 rounded-full hover:bg-base-content/10 transition-all flex items-center justify-center">
-                               
                                 <Settings className="w-5 h-5 text-base-content/70" />
                             </button>
                         </div>
