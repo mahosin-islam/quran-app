@@ -22,7 +22,7 @@ export default function Hero() {
     backgroundImage: "url('https://i.ibb.co.com/6cbGZqNK/Gemini-Generated-Image-bo6zu5bo6zu5bo6z.png')",
   }}
 >
-  {/* 🎨 Dark Mode Overlay - এটিই ইমেজকে ডার্ক মোডে অন্ধকার দেখাবে */}
+
   <div className="absolute inset-0 bg-white/30 dark:bg-slate-950/80 transition-colors duration-500" />
 
   {/* Background Decor */}

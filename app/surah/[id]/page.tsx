@@ -2,18 +2,6 @@ import { getSurahDetails, getAllSurahs } from "@/lib/api";
 import AyahList from "@/components/reader/AyahList";
 import { notFound } from "next/navigation";
 
-export async function generateStaticParams() {
-    try {
-        const surahs = await getAllSurahs();
-        return surahs.map((surah: any) => ({
-            id: surah.number.toString(),
-        }));
-    } catch (error) {
-        console.error("Error generating static params:", error);
-        return [];
-    }
-}
-
 export default async function SurahPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
 
